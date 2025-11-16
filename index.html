@@ -28,10 +28,52 @@
             border: none;
             border-radius: 4px;
             cursor: pointer;
+            margin-right: 5px;
         }
 
         button:hover {
             background-color: #0056b3;
+        }
+
+        .card {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        input {
+            padding: 8px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        table th,
+        table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        table th {
+            background-color: #007bff;
+            color: white;
         }
     </style>
 </head>
@@ -42,10 +84,12 @@
         <p>FURTHER TESTING</p>
 
         <h2>Sample Form</h2>
-        <form>
+        <form id="mainForm">
             <input type="text" placeholder="Enter your name" required>
             <input type="email" placeholder="Enter your email" required>
+            <input type="password" placeholder="Enter password" required>
             <button type="submit">Submit</button>
+            <button type="reset">Clear</button>
         </form>
 
         <h2>Random List</h2>
@@ -53,14 +97,88 @@
             <li>Item 1</li>
             <li>Item 2</li>
             <li>Item 3</li>
+            <li>Item 4</li>
+            <li>Item 5</li>
         </ul>
+
+        <h2>Cards Grid</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Card 1</h3>
+                <p>This is card one with some content.</p>
+            </div>
+            <div class="card">
+                <h3>Card 2</h3>
+                <p>This is card two with different content.</p>
+            </div>
+            <div class="card">
+                <h3>Card 3</h3>
+                <p>This is card three.</p>
+            </div>
+            <div class="card">
+                <h3>Card 4</h3>
+                <p>This is card four.</p>
+            </div>
+        </div>
+
+        <h2>Data Table</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>City</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>John Doe</td>
+                    <td>28</td>
+                    <td>New York</td>
+                </tr>
+                <tr>
+                    <td>Jane Smith</td>
+                    <td>34</td>
+                    <td>Los Angeles</td>
+                </tr>
+                <tr>
+                    <td>Bob Johnson</td>
+                    <td>45</td>
+                    <td>Chicago</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Actions</h2>
+        <button onclick="addItem()">Add Item</button>
+        <button onclick="removeItem()">Remove Item</button>
+        <button onclick="showAlert()">Show Alert</button>
     </div>
 
     <script>
-        document.querySelector('button').addEventListener('click', function (e) {
+        document.getElementById('mainForm').addEventListener('submit', function (e) {
             e.preventDefault();
             alert('Form submitted!');
+            this.reset();
         });
+
+        function addItem() {
+            const ul = document.querySelector('ul');
+            const newItem = document.createElement('li');
+            newItem.textContent = 'New Item ' + (ul.children.length + 1);
+            ul.appendChild(newItem);
+        }
+
+        function removeItem() {
+            const ul = document.querySelector('ul');
+            if (ul.children.length > 0) {
+                ul.removeChild(ul.lastChild);
+            }
+        }
+
+        function showAlert() {
+            alert('Hello! This is a dynamic alert.');
+        }
     </script>
 </body>
 
