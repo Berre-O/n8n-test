@@ -1,13 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            padding: 20px;
+        }
 
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
+
 <body>
-    <h1>TEST</h1>
-    <p>FURTHER TESTING</p>
+    <div class="container">
+        <h1>TEST</h1>
+        <p>FURTHER TESTING</p>
+
+        <h2>Sample Form</h2>
+        <form>
+            <input type="text" placeholder="Enter your name" required>
+            <input type="email" placeholder="Enter your email" required>
+            <button type="submit">Submit</button>
+        </form>
+
+        <h2>Random List</h2>
+        <ul>
+            <li>Item 1</li>
+            <li>Item 2</li>
+            <li>Item 3</li>
+        </ul>
+    </div>
+
+    <script>
+        document.querySelector('button').addEventListener('click', function (e) {
+            e.preventDefault();
+            alert('Form submitted!');
+        });
+    </script>
 </body>
+
 </html>
